@@ -13,6 +13,11 @@ const MainNav = ({
 
   const routes = [
     {
+      href: `/${params.storeId}`,
+      label: `Dashboard`,
+      active: pathname === `/${params.storeId}`,
+    },
+    {
       href: `/${params.storeId}/settings`,
       label: `Settings`,
       active: pathname === `/${params.storeId}/settings`,
@@ -31,7 +36,7 @@ const MainNav = ({
               : "text-muted-foreground"
           )}
         >
-         {route.label}
+          {route.label}
         </Link>
       ))}
     </nav>

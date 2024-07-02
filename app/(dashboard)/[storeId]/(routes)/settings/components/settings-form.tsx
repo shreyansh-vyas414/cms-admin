@@ -1,5 +1,6 @@
 "use client";
 import Loader from "@/components/loader";
+import AlertModal from "@/components/modals/alert-modal";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -40,14 +41,13 @@ const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const params = useParams();
   const router = useRouter();
-  const {storeId} = params;
+  const { storeId } = params;
 
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData,
   });
 
-  console.log(params, "params")
   const onSubmit = async (data: SettingsFormValues) => {
     try {
       setLoading(true);
@@ -62,9 +62,30 @@ const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
       setLoading(false);
     }
   };
+  const onConfirm = async () => {
+    try {
+      setLoading(true);
+      await axios.delete(`/api/stores/${storeId}`);
+      router.refresh();
+
+      toast.success("Successfully Deleted Store.");
+      router.push("/");
+    } catch (error) {
+      toast.error("Something went wrong.");
+    } finally {
+      setLoading(false);
+      setOpen(false);
+    }
+  };
 
   return (
     <>
+      <AlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onConfirm}
+        loading={loading}
+      />
       <div className="flex items-center justify-between">
         <Heading title="Settings" description="Manage Store Preferences" />
         <Button

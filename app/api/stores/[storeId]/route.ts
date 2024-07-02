@@ -44,9 +44,13 @@ export const PATCH = async (
   }
 };
 
-export const DELETE = async ({ params }: { params: { storeId: string } }) => {
+export const DELETE = async (
+  req: Request,
+  { params }: { params: { storeId: string } }
+) => {
   try {
     const { userId } = auth();
+    console.log("params.storeid", params);
 
     if (!userId) {
       return new NextResponse("UNAUTHENTICATED", { status: 401 });
