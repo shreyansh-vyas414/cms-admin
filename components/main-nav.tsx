@@ -25,13 +25,13 @@ const MainNav = ({
           key={route.href}
           href={route.href}
           className={cn(
-            "relative before:absolute before:bg-cyan-300 before:bottom-0 before:left-0 before:h-full before:w-full before:origin-bottom before:scale-y-[0.35] hover:before:scale-y-100 before:transition-transform before:ease-in-out before:duration-500 text-sm font-medium trasnition-colors hover:text-primary duration-1000",
+            "relative hover:text-gray-800 duration-500 after:absolute after:bg-gray-800 after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300",
             route.active
               ? "text-black dark:text-white"
               : "text-muted-foreground"
           )}
         >
-          <span className="relative">{route.label}</span>
+         {route.label}
         </Link>
       ))}
     </nav>

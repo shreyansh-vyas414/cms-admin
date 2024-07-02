@@ -6,7 +6,6 @@ const Loader = () => {
       className="animate-spin h-4 w-4 text-white"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
-
       viewBox="0 0 24 24"
     >
       <circle
@@ -15,7 +14,7 @@ const Loader = () => {
         cy="12"
         r="10"
         stroke="currentColor"
-        stroke-width="4"
+        strokeWidth="4"
       ></circle>
       <path
         className="opacity-75"
