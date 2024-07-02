@@ -88,14 +88,15 @@ const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
         loading={loading}
       />
       <div className="flex items-center justify-between">
-        <Heading title="Settings" description="Manage Store Preferences" />
+        <Heading title="Settings" description="Manage Your Store Preferences" />
         <Button
+          className="border-red-200"
           disabled={loading}
           variant={"outline"}
           size={"sm"}
           onClick={() => setOpen(true)}
         >
-          <Trash className="h-4 w-4" />
+          <Trash className="h-4 w-4 text-red-500" />
         </Button>
       </div>
       <Separator />
@@ -132,7 +133,7 @@ const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
       <Separator />
       <ApiAlert
         title="NEXT_PUBLIC_API_URL"
-        description="http://localhost:3000/cly4dgfhz0000s994j1mt74u3/settings"
+        description={`${origin}/api/${params.storeId}`}
         varient="public"
       />
     </>
