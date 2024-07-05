@@ -8,6 +8,7 @@ import React, { FC, useEffect } from "react";
 import { BillboardColumn, columns } from "./columns";
 import { DataTable } from "@/components/data-table";
 import Image from "next/image";
+import { ApiList } from "@/components/api-list";
 
 interface BillboardClientProps {
   data: BillboardColumn[];
@@ -55,6 +56,9 @@ const BillboardClient: FC<BillboardClientProps> = ({ data }) => {
           </h3>
         </div>
       )}
+      <Heading title="API" description="API calls for billboard" />
+      <Separator />
+      <ApiList entityName="billboards" entityIdName="billboardId" />
     </>
   );
 };
