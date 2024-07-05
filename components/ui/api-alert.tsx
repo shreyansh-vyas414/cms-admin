@@ -38,7 +38,7 @@ const ApiAlert: FC<ApiAlertProps> = ({
       <ServerIcon className="h-4 w-4" />
       <AlertTitle className="flex items-center gap-x-2">
         {title}
-        <Badge variant={varientMap[varient]}>{textMap["public"]}</Badge>
+        <Badge variant={varientMap[varient]}>{textMap[varient]}</Badge>
       </AlertTitle>
       <AlertDescription className="mt-4 flex items-center justify-between">
         <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
