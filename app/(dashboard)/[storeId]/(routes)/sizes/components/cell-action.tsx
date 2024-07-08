@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { BillboardColumn } from "./columns";
+import { SizeColumn } from "./columns";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +16,7 @@ import axios from "axios";
 import AlertModal from "@/components/modals/alert-modal";
 
 interface CellActionProps {
-  data: BillboardColumn;
+  data: SizeColumn;
 }
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -27,20 +27,20 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success("Billboard id copied to the clipboard.");
+    toast.success("Size id copied to the clipboard.");
   };
 
   console.log(params, "params");
   const onConfirm = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
-      toast.success("Successfully Deleted Billboard.");
+      await axios.delete(`/api/${params.storeId}/sizes/${data.id}`);
+      toast.success("Successfully Deleted Sizes.");
       router.refresh();
-      router.push(`/${params.storeId}/billboards`);
+      router.push(`/${params.storeId}/sizes`);
     } catch (error) {
       toast.error(
-        "Make sure you removed all categories using this billboard first."
+        "Make sure you removed all categories using this sizes first."
       );
     } finally {
       setLoading(false);
@@ -71,7 +71,7 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => {
-              router.push(`/${params.storeId}/billboards/${data.id}`);
+              router.push(`/${params.storeId}/sizes/${data.id}`);
             }}
           >
             <Edit className="mr-2 h-4 w-4" />

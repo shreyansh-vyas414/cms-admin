@@ -37,6 +37,7 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
       await axios.delete(`/api/${params.storeId}/categories/${data.id}`);
       toast.success("Successfully Deleted Category.");
       router.refresh();
+      router.push(`/${params.storeId}/categories`);
     } catch (error) {
       toast.error(
         "Make sure you removed all products using this category first."
