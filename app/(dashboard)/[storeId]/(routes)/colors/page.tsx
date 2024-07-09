@@ -1,11 +1,11 @@
 import React from "react";
-import SizeClient from "./components/size-client";
 import db from "@/lib/db";
-import { SizeColumn } from "./components/columns";
+import { ColorsColumn } from "./components/columns";
 import { format } from "date-fns";
+import ColorsClient from "./components/color-client";
 
 const BillboardsPage = async ({ params }: { params: { storeId: string } }) => {
-  const sizes = await db.size.findMany({
+  const colors = await db.color.findMany({
     where: {
       storeId: params.storeId,
     },
@@ -14,7 +14,7 @@ const BillboardsPage = async ({ params }: { params: { storeId: string } }) => {
     },
   });
 
-  const formattedSizes: SizeColumn[] = sizes.map((item) => ({
+  const formattedColors: ColorsColumn[] = colors.map((item) => ({
     id: item.id,
     name: item.name,
     value: item.value,
@@ -24,7 +24,7 @@ const BillboardsPage = async ({ params }: { params: { storeId: string } }) => {
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <SizeClient data={formattedSizes} />
+        <ColorsClient data={formattedColors} />
       </div>
     </div>
   );
