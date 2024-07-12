@@ -24,16 +24,16 @@ export const FileUpload = ({ onChange, endpoint }: FileUploadProps) => {
     // />
     <UploadButton
       endpoint={endpoint}
-      onClientUploadComplete={(res) => {
-        onChange(res?.[0].url);
+      onClientUploadComplete={(res: string | any) => {
+        onChange(res);
       }}
       appearance={{
         button: {
-          backgroundColor: "#000000"
+          backgroundColor: "#000000",
         },
         container: {
-          alignItems: 'baseline'
-        }
+          alignItems: "baseline",
+        },
       }}
       onUploadError={(error: Error) => {
         console.log("error:", error);
